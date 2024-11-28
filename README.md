@@ -36,6 +36,95 @@
 
 ![image](https://github.com/user-attachments/assets/cbfbf839-413f-49ac-a71f-e35cb1e4dc78)
 
+## **Использование**
+```
+python config_to_xml.py --input <path_to_input_file> --output <path_to_output_file>
+```
+Где:
+
+   - `--input <path_to_input_file>` — путь к входному конфигурационному файлу, который должен быть преобразован.
+   - `--output <path_to_output_file>` — путь к выходному файлу, в который будет записан XML-формат.
+
+Пример:
+
+1. Входной файл `game_config.txt:`
+```
+const max_players = 10;
+const player_names = list(Alice, Bob, Charlie);
+```
+2. Команда для преобразования:
+```
+python config_to_xml.py --input examples/game_config.txt --output examples/game_config.xml
+```
+3. Выходной XML-файл `game_config.xml:`
+```
+<configuration>
+    <constant name="max_players">10</constant>
+    <constant name="player_names">
+        <list>
+            <value>Alice</value>
+            <value>Bob</value>
+            <value>Charlie</value>
+        </list>
+    </constant>
+</configuration>
+```
+## **Структура конфигурационного файла**
 
 
+Конфигурационный файл должен быть в следующем формате:
+
+
+1. Объявление константы
+```
+const <name> = <value>;
+```
+
+   - `<name>` — имя константы, которое должно быть идентификатором.
+   - `<value>` — значение константы, которое может быть числом, строкой или списком.
+2. Списки
+Списки задаются следующим образом:
+```
+const <name> = list(<item1>, <item2>, <item3>, ...);
+```
+Каждый элемент в списке может быть числом, строкой или другим значением.
+
+## **Примеры**
+1. Числовая константа:
+```
+const max_players = 10;
+```
+2. Строковая константа:
+```
+const greeting = "Hello, World!";
+```
+3. Список строк:
+```
+const player_names = list(Alice, Bob, Charlie);
+```
+
+## **Функции и классы**
+**Класс** `ConfigParser`
+Основной класс для парсинга и преобразования конфигурационного файла.
+
+**Атрибуты:**
+   - `config_text` (str) — строка, содержащая текст конфигурации.
+   - `constants` (dict) — словарь, где ключами являются имена констант, а значениями — соответствующие им значения.
+**Методы:**
+   - `__init__(self, config_text)`: Инициализирует объект с текстом конфигурации.
+   - `parse(self)`: Разбирает текст конфигурации и извлекает константы.
+   - `parse_constant(self, line)`: Разбирает одну строку с объявлением константы.
+   - `evaluate(self, expr)`: Оценивает выражение и возвращает соответствующее значение.
+   - `parse_list(self, expr)`: Разбирает список, если выражение представляет собой конструкцию list(...).
+   - `to_xml(self)`: Преобразует разобранные данные в формат XML.
+
+## **Тестирование**
+```
+python -m unittest discover tests
+```
+Тесты находятся в папке tests, и их можно использовать для проверки корректности работы парсера и конвертера.
+
+**Пример теста:**
+
+![image](https://github.com/user-attachments/assets/dbe3cad2-272f-4bf2-8a7a-96c8eae1e5c2)
 
