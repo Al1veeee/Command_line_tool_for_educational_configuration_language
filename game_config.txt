@@ -1,0 +1,2 @@
+const max_players = 10;
+const player_names = list(Alice, Bob, Charlie);

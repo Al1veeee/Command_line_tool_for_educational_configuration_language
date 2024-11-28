@@ -1,0 +1,2 @@
+const server_port = 8080;
+const server_ips = list(19216801, 19216802, 19216803);
