@@ -68,7 +68,7 @@ python config_to_xml.py --input examples/game_config.txt --output examples/game_
          <value>Charlie</value>
       </list>
    </constant>
-   <constant name="prikol">10</constant>
+   <constant name="players">10</constant>
 </configuration>
 ```
 ## **Структура конфигурационного файла**
