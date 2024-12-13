@@ -51,6 +51,7 @@ python config_to_xml.py --input <path_to_input_file> --output <path_to_output_fi
 ```
 const max_players = 10;
 const player_names = list(Alice, Bob, Charlie);
+const prikol = $max_players$;
 ```
 2. Команда для преобразования:
 ```
@@ -59,14 +60,15 @@ python config_to_xml.py --input examples/game_config.txt --output examples/game_
 3. Выходной XML-файл `game_config.xml:`
 ```
 <configuration>
-    <constant name="max_players">10</constant>
-    <constant name="player_names">
-        <list>
-            <value>Alice</value>
-            <value>Bob</value>
-            <value>Charlie</value>
-        </list>
-    </constant>
+   <constant name="max_players">10</constant>
+   <constant name="player_names">
+      <list>
+         <value>Alice</value>
+         <value>Bob</value>
+         <value>Charlie</value>
+      </list>
+   </constant>
+   <constant name="prikol">10</constant>
 </configuration>
 ```
 ## **Структура конфигурационного файла**
